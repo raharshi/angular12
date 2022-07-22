@@ -1,0 +1,25 @@
+<div class="container" *ngIf="people; else noData">
+  <ng-content select=".greet"></ng-content>
+  <ng-content select=".header"></ng-content>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>age</th>
+        <th>City</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let emp of people">
+        <td>{{ emp?.name }}</td>
+        <td>{{ emp?.age }}</td>
+        <td>{{ emp?.city }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-content select="#footer"></ng-content>
+</div>
+
+<ng-template #noData>
+  <h2>No Data Available</h2>
+</ng-template>

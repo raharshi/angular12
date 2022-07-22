@@ -1,0 +1,21 @@
+<div class="bg-light p-2">
+  <p #mess>parent works!</p>
+  <p #mess>hello!</p>
+  <p #mess>how are you?</p>
+  <p *ngIf="showMessage">{{ parentMessage }}</p>
+  <p>age is : {{ age }}</p>
+  <!-- <p>{{ childMessage }}</p> -->
+  <h6 *ngFor="let fruit of fruits">{{ fruit }}</h6>
+  <div class="d-flex mb-2">
+    <button mat-raised-button color="primary" (click)="inc()">increment</button>
+    <button mat-raised-button color="warn" class="ml-2" (click)="dec()">
+      decrement
+    </button>
+  </div>
+  <app-child
+    [childMessage]="parentMessage"
+    [userList]="users"
+    (notify)="getData($event)"
+    #childComp
+  ></app-child>
+</div>

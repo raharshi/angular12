@@ -1,0 +1,145 @@
+<form
+  #registerForm="ngForm"
+  class="example-form"
+  (ngSubmit)="registerForm.valid && onSubmit(registerForm)"
+>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Company (disabled)</mat-label>
+    <input matInput [disabled]="disable" value="Google" />
+  </mat-form-field>
+
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>First name</mat-label>
+          <input
+            matInput
+            name="firstname"
+            #firstname="ngModel"
+            [(ngModel)]="user.firstname"
+            required
+          />
+          <mat-error
+            *ngIf="registerForm.submitted && firstname?.errors?.required"
+          >
+            firstname is mandatory
+          </mat-error>
+        </mat-form-field>
+      </td>
+
+      <td>
+        <mat-form-field class="example- full-width" appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input
+            matInput
+            name="lastname"
+            #lastname="ngModel"
+            [(ngModel)]="user.lastname"
+            required
+          />
+          <mat-error
+            *ngIf="registerForm.submitted && lastname?.errors?.required"
+          >
+            lastname is mandatory
+          </mat-error>
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <p>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Address</mat-label>
+      <textarea
+        matInput
+        name="address1"
+        #address1="ngModel"
+        placeholder="Ex. 100 Main St"
+        [(ngModel)]="user.address.address1"
+      >
+1600 Amphitheatre Pkwy</textarea
+      >
+      <mat-error *ngIf="registerForm.submitted && address1?.errors?.required">
+        address1 is mandatory
+      </mat-error>
+      <mat-error *ngIf="registerForm.submitted && address1?.errors?.maxlength">
+        enter minimum 10 characters
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Address 2</mat-label>
+      <textarea
+        matInput
+        name="address2"
+        [(ngModel)]="user.address.address2"
+      ></textarea>
+    </mat-form-field>
+  </p>
+
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>City</mat-label>
+          <input
+            matInput
+            name="city"
+            placeholder="Ex. San Francisco"
+            [(ngModel)]="user.address.city"
+          />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>State</mat-label>
+          <input
+            matInput
+            name="state"
+            placeholder="Ex. California"
+            [(ngModel)]="user.address.state"
+          />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Postal Code</mat-label>
+          <input
+            matInput
+            name="zip"
+            #postalCode="ngModel"
+            max
+            length="6"
+            placeholder="Ex. 94105"
+            value="94043"
+            [(ngModel)]="user.address.zip"
+          />
+          <mat-error
+            *ngIf="registerForm.submitted && postalCode?.errors?.minlength"
+          >
+            enter minimum 6 characters
+          </mat-error>
+          <!-- <mat-hint align="end">{{ postalCode.value.length }} / 6</mat-hint> -->
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <div>
+    Form Value: {{ registerForm.value | json }} Submitted:
+    {{ registerForm.submitted }} Touched: {{ registerForm.touched }} Dirty:
+    {{ registerForm.dirty }} Pristine: {{ registerForm.pristine }}
+
+    FirstName Errors:{{ firstname.errors | json }} LastName Errors:{{
+      lastname.errors | json
+    }}
+
+    adress1 errors:{{ address1?.errors | json }} postal code errors:{{
+      postalCode?.errors | json
+    }}
+  </div>
+  <button mat-raised-button color="primary">Submit</button>
+  <button mat-raised-button color="warn" (click)="resetForm(registerForm)">
+    Reset
+  </button>
+</form>

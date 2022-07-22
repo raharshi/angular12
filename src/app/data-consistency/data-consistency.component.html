@@ -1,0 +1,40 @@
+<div class="d-flex">
+  <!-- Parent Data -->
+
+  <div class="col-md-6" *ngIf="users; else noData">
+    <h1>Parent Users</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>age</th>
+          <th>City</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emp of users">
+          <td>{{ emp?.id }}</td>
+          <td>
+            <a [routerLink]="['/data-consistency/user', emp.id]">{{
+              emp?.name
+            }}</a>
+          </td>
+          <td>{{ emp?.age }}</td>
+          <td>{{ emp?.city }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button mat-raised-button (click)="sliceData()">Slice Data</button>
+  </div>
+
+  <!-- Child Data -->
+  <div class="col-md-6">
+    <app-dc-child></app-dc-child>
+  </div>
+</div>
+
+<ng-template #noData>
+  <h2>No Data Available</h2>
+</ng-template>

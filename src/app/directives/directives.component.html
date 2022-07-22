@@ -1,0 +1,41 @@
+<h1>Attribute Directives</h1>
+
+<h2
+  [ngStyle]="{
+    'background-color': isRed ? 'red' : 'green',
+    color: isRed ? 'white' : 'grey'
+  }"
+>
+  NgStyle
+</h2>
+
+<button mat-button color="primary" (click)="changeColor()">toggle color</button>
+
+<h2
+  [ngClass]="{
+    red: isRed,
+    green: isRed == false
+  }"
+>
+  NgClass
+</h2>
+
+<h1>Structural Directives</h1>
+
+<h2 *ngIf="isRed; else noData">This is NgIf Directive</h2>
+
+<ng-template #noData>
+  <h2>No data</h2>
+</ng-template>
+
+<h2>*NgFor Directive</h2>
+<h6 *ngFor="let name of userNames">{{ name }}</h6>
+
+<h2>*NgSwitch Directive</h2>
+<div [ngSwitch]="name">
+  <p *ngSwitchCase="'Rob'">Hello Rob</p>
+  <p *ngSwitchCase="'JC'">Hello JC</p>
+  <p *ngSwitchCase="'Kenn'">Hello Kenn</p>
+  <p *ngSwitchCase="'Clair'">Hello Clair</p>
+  <p *ngSwitchDefault>Hello! Welcome.</p>
+</div>
