@@ -31,7 +31,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { DcUserComponent } from './data-consistency/dc-user/dc-user.component';
 import { PipesExamplesComponent } from './pipes/pipes-examples/pipes-examples.component';
 import { SearchPipe } from './pipes/search.pipe';
-
+import { HttpClientModule } from '@angular/common/http'
 
 
 @NgModule({
@@ -69,7 +69,8 @@ import { SearchPipe } from './pipes/search.pipe';
     FormsModule,
     MatInputModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

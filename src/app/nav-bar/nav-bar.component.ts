@@ -8,13 +8,13 @@ import { Router } from '@angular/router';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private Router: Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
   navigateToBinding(id: any) {
     console.log("Navigating to Binding.." + id);
-    this.Router.navigate(['binding']);
+    this.router.navigate(['binding']);
   }
 }

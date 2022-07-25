@@ -16,7 +16,12 @@ export class DataConsistencyComponent implements OnInit {
     this.users = this.userService.users;
     this.userService.refresh.subscribe(res => {
       if (res)
-        this.users = this.userService.users;
+        // this.users = this.userService.users;
+
+        // comment below code and uncomment above code  if you want to test data consistency under DataConsistency Component
+        this.userService.getUsers().subscribe(res => {
+          this.users = res;
+        })
     })
   }
 

@@ -15,7 +15,12 @@ export class DcChildComponent implements OnInit {
     this.users = this.userService.users;
     this.userService.refresh.subscribe(res => {
       if (res)
-        this.users = this.userService.getusers();
+        // this.users = this.userService.getusers();
+
+        // comment below code and uncomment above code  if you want to test data consistency under DataConsistency Component
+        this.userService.getUsers().subscribe(res => {
+          this.users = res;
+        })
     })
   }
 

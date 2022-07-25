@@ -1,10 +1,13 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+
+  usersDataUrl: string = "http://localhost:3000/users";
 
   refresh: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
 
@@ -16,10 +19,15 @@ export class UserService {
     { id: '5', name: 'Hani', age: '27', city: 'Dallas' }
   ];
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
-  getusers() {
-    return this.users;
+  getUsers(): Observable<any> {
+    // getusers() {
+    // return this.users;
+
+    // comment below code and uncomment above code  if you want to test data consistency under DataConsistency Component
+    return this.httpClient.get(this.usersDataUrl);
+
   }
 
   slice() {

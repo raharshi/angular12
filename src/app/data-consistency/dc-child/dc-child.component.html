@@ -4,15 +4,15 @@
     <thead>
       <tr>
         <th>Name</th>
-        <th>age</th>
+        <th>Email</th>
         <th>City</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let emp of users">
         <td>{{ emp?.name }}</td>
-        <td>{{ emp?.age }}</td>
-        <td>{{ emp?.city }}</td>
+        <td>{{ emp?.email }}</td>
+        <td>{{ emp?.address?.city }}</td>
       </tr>
     </tbody>
   </table>
